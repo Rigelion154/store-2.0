@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica&family=Roboto&display=swap');
+
+:root {
+  --color-dark-primary: #191919;
+  --color-dark-secondary: #212123;
+  --color-title: #F6F6F7;
+  --color-subtitle: #B8B8B8;
+  --color-accent-primary: #6C3EB8;
+  --color-accent-secondary: #8B57C6;
+  --color-text-primary: #576067;
+  --color-text-secondary: #616E74;
+}
+
+html {
+  font-size: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  font-size: 2rem;
+  color: var(--color-title);
+  font-family: "Roboto", sans-serif;
+  background-color: var(--color-dark-secondary);
+}
+
+.container {
+  max-width: 1265px;
+  padding: 0 30px;
+  margin: 0 auto;
+}

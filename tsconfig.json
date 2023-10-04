@@ -11,9 +11,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "baseUrl": "./src",
-    "paths": {
-      "@/*": ["*"]
-    },
     "resolveJsonModule": true,
     "isolatedModules": true
   },

@@ -1,0 +1,51 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+
+  &__form {
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    border-radius: 6px;
+    background-color: var(--color-dark-primary);
+    padding: 4px 10px;
+  }
+  &__input {
+    background-color: var(--color-dark-primary);
+    color: var(--color-title);
+    border: none;
+    outline: none;
+    &::placeholder{
+      color: var(--color-subtitle);
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+    color: var(--color-subtitle);
+    transition: color .5s;
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      color: var(--color-accent-secondary);
+    }
+
+    &:hover {
+      color: var(--color-title);
+    }
+  }
+}
+
