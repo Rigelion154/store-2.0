@@ -40,7 +40,27 @@
     &-icon {
       display: flex;
       align-items: center;
-      color: var(--color-accent-secondary);
+      //color: var(--color-accent-secondary);
+    }
+
+    &-title {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+    }
+
+    &-size {
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      right: 0;
+      bottom: -5px;
+      font-size: 1rem;
+      border-radius: 50%;
+      background-color: var(--color-accent-secondary);
+      color: var(--color-title);
     }
 
     &:hover {
@@ -49,3 +69,6 @@
   }
 }
 
+.nav_active {
+  color: white;
+}

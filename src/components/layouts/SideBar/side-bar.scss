@@ -1,0 +1,46 @@
+.aside {
+  width: 305px;
+  height: 423px;
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  row-gap: 35px;
+  top: 0;
+  left: 0;
+}
+
+.aside__title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.aside__nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.aside__link {
+  font-size: 1.6rem;
+  text-transform: capitalize;
+}
+
+.active {
+  color: var(--color-accent-secondary);
+  transition: color .5s;
+}
+
+.cat__links {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  padding: 10px;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.cat__links.show {
+  opacity: 1;
+}
