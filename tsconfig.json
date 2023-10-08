@@ -12,7 +12,8 @@
     "noUnusedParameters": true,
     "baseUrl": "./src",
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "noImplicitAny": true
   },
   "exclude": ["node_modules", "build"]
 }

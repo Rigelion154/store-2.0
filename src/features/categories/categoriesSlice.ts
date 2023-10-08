@@ -3,27 +3,29 @@ import axios from 'axios';
 import { apiConstants } from '../../utils/constants/apiConstants';
 import { ICategoriesResponse, ICategory } from '../../types/categoriesType';
 
-const baseUrl = `${apiConstants.apiUrl}/${apiConstants.projectKey}/categories`;
-const token = localStorage.getItem('accessToken');
-
 export const getCategories = createAsyncThunk(
   'categories/getCategories',
-  async () => {
-    const response = await axios.get<ICategoriesResponse>(baseUrl, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  async (_, thunkAPI) => {
+    try {
+      const baseUrl = `${apiConstants.apiUrl}/${apiConstants.projectKey}/categories`;
+      const token = localStorage.getItem('accessToken');
+      const response = await axios.get<ICategoriesResponse>(baseUrl, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    const { results } = response.data;
+      const { results } = response.data;
 
-    return results;
+      return results;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   },
 );
 
 interface CategoriesState {
   categoriesArray: ICategory[];
-  categoryArray: ICategory[];
   subCategoriesArray: ICategory[];
   loading: 'idle' | 'pending' | 'succeeded' | 'failed';
 }
@@ -31,7 +33,6 @@ interface CategoriesState {
 const initialState: CategoriesState = {
   categoriesArray: [],
   subCategoriesArray: [],
-  categoryArray: [],
   loading: 'idle',
 };
 
@@ -46,11 +47,18 @@ export const categoriesSlice = createSlice({
     // },
   },
   extraReducers: (builder) => {
+    builder.addCase(getCategories.pending, (state) => {
+      state.loading = 'pending';
+    });
     builder.addCase(getCategories.fulfilled, (state, { payload }) => {
       state.categoriesArray = payload.filter((el) => el.ancestors.length === 0);
       state.subCategoriesArray = payload.filter(
         (el) => el.ancestors.length > 0,
       );
+      state.loading = 'succeeded';
+    });
+    builder.addCase(getCategories.rejected, (state) => {
+      state.loading = 'failed';
     });
   },
 });

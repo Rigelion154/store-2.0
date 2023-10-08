@@ -35,10 +35,11 @@ const SideBar = () => {
     }
   }, [location.pathname]);
 
+  console.log('aside is loading');
   return (
     <aside
       className="section aside"
-      style={{ position: currentPath === '/' ? 'static' : 'sticky' }}
+      style={{ position: currentPath === '/' ? 'absolute' : 'sticky' }}
     >
       <NavLink to={ROUTES.CATEGORIES} className="aside__title">
         Categories
