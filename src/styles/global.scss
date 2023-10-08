@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geologica&family=Montserrat:wght@400;500;600;700;900&family=Roboto&display=swap');
+
+:root {
+  --color-dark-primary: #191919;
+  --color-dark-secondary: #212123;
+  --color-title: #F6F6F7;
+  --color-subtitle: #B8B8B8;
+  --color-accent-primary: #6C3EB8;
+  --color-accent-secondary: #8B57C6;
+  --color-text-primary: #576067;
+  --color-text-secondary: #616E74;
+}
+
+html {
+  font-size: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  font-size: 1.4rem;
+  color: var(--color-title);
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-dark-secondary);
+}
+
+.main {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+.container {
+  max-width: 1305px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.section {
+  padding: 25px;
+  border-radius: 6px;
+  background-color: var(--color-dark-primary);
+}
+
+.button {
+  border: none;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 600;
+  background-color: var(--color-accent-primary);
+  padding: 10px 30px;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-accent-primary);
+    background-color: white;
+    transition: color, background-color .7s ease-out;
+  }
+}

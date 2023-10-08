@@ -1,0 +1,21 @@
+.footer__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.footer__link {
+  color: var(--color-accent-primary);
+}
+
+.footer__social {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.footer__social-link:hover {
+  transition: color .5s ease-out;
+  color: var(--color-accent-primary);
+}
