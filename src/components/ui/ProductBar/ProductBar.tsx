@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './trending.scss';
+import './product-bar.scss';
 import { MasterData } from '../../../types/productsType';
 import { Link } from 'react-router-dom';
 

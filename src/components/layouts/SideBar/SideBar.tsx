@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -11,6 +11,7 @@ import './side-bar.scss';
 const SideBar = () => {
   const [subCategories, setSubCategories] = useState<ICategory[]>([]);
   const [activeCategoryId, setActiveCategoryId] = useState<string>('');
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -26,6 +27,24 @@ const SideBar = () => {
     setActiveCategoryId(id);
   }
 
+  function handleResize(setScreen: Dispatch<SetStateAction<boolean>>) {
+    if (window.innerWidth < 1300) {
+      setScreen(true);
+    } else {
+      setScreen(false);
+    }
+  }
+
+  useEffect(() => {
+    handleResize(setIsSmallScreen);
+    window.addEventListener('resize', () => handleResize(setIsSmallScreen));
+    return () => {
+      window.removeEventListener('resize', () =>
+        handleResize(setIsSmallScreen),
+      );
+    };
+  }, []);
+
   useEffect(() => {
     if (
       !categoriesArray.some((cat) => currentPath.includes(cat.slug['en-US']))
@@ -39,7 +58,14 @@ const SideBar = () => {
   return (
     <aside
       className="section aside"
-      style={{ position: currentPath === '/' ? 'absolute' : 'sticky' }}
+      style={{
+        position:
+          currentPath === '/'
+            ? isSmallScreen
+              ? 'static'
+              : 'absolute'
+            : 'sticky',
+      }}
     >
       <NavLink to={ROUTES.CATEGORIES} className="aside__title">
         Categories
