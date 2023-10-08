@@ -8,10 +8,13 @@
 .trending__products {
   display: flex;
   align-items: center;
-  column-gap: 20px;
+  justify-content: center;
+  column-gap: 18px;
+  flex-wrap: wrap;
 }
 
 .trending__product {
+  width: 230px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;

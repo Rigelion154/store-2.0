@@ -7,6 +7,11 @@
   row-gap: 35px;
   top: 0;
   left: 0;
+  @media screen and (max-width: 1300px){
+    width: 100%;
+    height: unset;
+    align-items: center;
+  }
 }
 
 .aside__title {
