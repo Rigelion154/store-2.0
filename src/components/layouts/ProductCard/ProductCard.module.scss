@@ -1,0 +1,32 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.img {
+  width: 369px;
+  height: 369px;
+  padding: 50px;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.slider__wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
+
+.slider__img {
+  width: 89px;
+  height: 89px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.description {
+  max-width: 338px;
+}

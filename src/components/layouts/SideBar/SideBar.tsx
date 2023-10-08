@@ -54,7 +54,6 @@ const SideBar = () => {
     }
   }, [location.pathname]);
 
-  console.log('aside is loading');
   return (
     <aside
       className="section aside"
