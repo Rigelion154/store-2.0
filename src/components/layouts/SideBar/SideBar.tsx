@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 import { RootState } from '../../../features/store';
 import { ICategory } from '../../../types/categoriesType';
-// import { ROUTES } from '../../../routes/routes';
 
 import './side-bar.scss';
 
