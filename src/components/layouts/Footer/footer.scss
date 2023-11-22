@@ -9,13 +9,23 @@
   color: var(--color-accent-primary);
 }
 
+.footer__logo {
+  @media screen and (max-width: 520px) {
+    display: none;
+  }
+}
+
 .footer__social {
   display: flex;
   align-items: center;
   column-gap: 10px;
+  @media screen and (max-width: 520px) {
+    column-gap: 5px;
+  }
 }
 
 .footer__social-link:hover {
   transition: color .5s ease-out;
   color: var(--color-accent-primary);
 }
+

@@ -20,6 +20,7 @@ const Category = () => {
       style={{
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'center',
         rowGap: '20px',
         flexGrow: 1,
       }}
