@@ -5,6 +5,7 @@ import Home from '../../pages/Home/Home';
 import Category from '../../pages/Category/Category';
 import Categories from '../../pages/Categories/Categories';
 import SubCategory from '../../pages/SubCategory/SubCategory';
+import Login from '../../pages/Login/Login';
 
 const AppRouter = () => (
   <Routes>
@@ -12,6 +13,7 @@ const AppRouter = () => (
     <Route path={ROUTES.CATEGORIES} element={<Categories />} />
     <Route path={ROUTES.CATEGORY} element={<Category />} />
     <Route path={ROUTES.SUBCATEGORY} element={<SubCategory />} />
+    <Route path={ROUTES.LOGIN} element={<Login />} />
   </Routes>
 );
 
