@@ -46,19 +46,25 @@ const ProductBar = ({
                 <div className="trending__products-footer">
                   <div className="trending__products-prices">
                     <h4 className="trending__products-price">
-                      {price.toLocaleString('US', {
-                        style: 'currency',
-                        currency: 'USD',
-                        maximumFractionDigits: 0,
-                      })}
-                    </h4>
-                    <h4 className="trending__products-discount">
                       {discount &&
                         discount.toLocaleString('US', {
                           style: 'currency',
                           currency: 'USD',
                           maximumFractionDigits: 0,
                         })}
+                    </h4>
+                    <h4
+                      className={`${
+                        !discount
+                          ? 'trending__products-price'
+                          : 'trending__products-discount'
+                      }`}
+                    >
+                      {price.toLocaleString('US', {
+                        style: 'currency',
+                        currency: 'USD',
+                        maximumFractionDigits: 0,
+                      })}
                     </h4>
                   </div>
                   <div className="trending__products-purchases">

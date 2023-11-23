@@ -16,22 +16,19 @@ function App() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await getAnonymousToken();
-      if (!localStorage.getItem('accessToken'))
-        localStorage.setItem('accessToken', res.accessToken);
-      if (!localStorage.getItem('refreshToken'))
-        localStorage.setItem('refreshToken', res.refreshToken);
+    const getToken = async () => {
+      const accessToken = await getAnonymousToken();
+      localStorage.setItem('accessToken', accessToken);
     };
 
-    async function fetchAllData() {
+    async function fetchData() {
       setLoading(true);
-      await fetchData();
+      await getToken();
       await dispatch(getCategories());
       await dispatch(getProducts());
     }
 
-    fetchAllData()
+    fetchData()
       .then(() => {})
       .catch(() => {})
       .finally(() => setLoading(false));

@@ -48,7 +48,7 @@
 //    "sourceType": "module"
 //  },
 //  "plugins": ["react", "@typescript-eslint", "react-hooks"],
-//  "ignorePatterns": ["jest.config.js", "*.css", "*.svg"],
+//  "ignorePatterns": ["jest.config.cjs", "*.css", "*.svg"],
 //  "rules": {
 //    "@typescript-eslint/no-misused-promises": "off",
 //    "no-use-before-define": "off",

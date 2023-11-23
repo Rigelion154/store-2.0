@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+
+.link {
+  position: relative;
+}
+
+.link:not(:last-child):after {
+  content: '>';
+  position: absolute;
+}
