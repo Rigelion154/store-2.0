@@ -1,13 +1,3 @@
-interface ImageDimensions {
-  h: number;
-  w: number;
-}
-
-interface Image {
-  dimensions: ImageDimensions;
-  url: string;
-}
-
 export type Price = {
   id: string;
   value: {
@@ -31,35 +21,6 @@ export type Price = {
   };
 };
 
-interface MasterVariant {
-  attributes: Attributes[];
-  id: number;
-  images: Image[];
-  prices: Price[];
-  sku: string;
-}
-
-interface Attributes {
-  name: string;
-  value: string | number;
-}
-
-export interface IProductResponse {
-  limit: number;
-  offset: number;
-  count: number;
-  total: number;
-  results: IProduct[];
-}
-
-export interface IMasterDataResponse {
-  limit: number;
-  offset: number;
-  count: number;
-  total: number;
-  results: MasterData[];
-}
-
 export interface Asset {
   id: string;
   key?: string;
@@ -78,58 +39,6 @@ export interface Asset {
   custom?: {
     [key: string]: string;
   };
-}
-
-export interface IProduct {
-  id: string;
-  key: string;
-  masterData: {
-    current: {
-      categories: {
-        id: string;
-        typeId: string;
-      }[];
-      description: {
-        'en-US': string;
-      };
-      masterVariant: MasterVariant;
-      name: {
-        'en-US': string;
-      };
-      slug: {
-        en: string;
-      };
-      variants: MasterVariant[];
-    };
-    staged: {
-      categories: {
-        id: string;
-        typeId: string;
-      }[];
-      description: {
-        en: string;
-      };
-      masterVariant: MasterVariant;
-      name: {
-        'en-US': string;
-      };
-      slug: {
-        en: string;
-      };
-      variants: Attributes[];
-    };
-  };
-  productType: {
-    id: string;
-    typeId: string;
-  };
-  taxCategory: {
-    id: string;
-    typeId: string;
-  };
-  version: number;
-  createdAt: string;
-  lastModifiedAt: string;
 }
 
 export interface MasterData {
@@ -205,3 +114,77 @@ export interface MasterData {
   createdAt: string;
   lastModifiedAt: string;
 }
+
+// export interface IProduct {
+//   id: string;
+//   key: string;
+//   masterData: {
+//     current: {
+//       categories: {
+//         id: string;
+//         typeId: string;
+//       }[];
+//       description: {
+//         'en-US': string;
+//       };
+//       masterVariant: MasterVariant;
+//       name: {
+//         'en-US': string;
+//       };
+//       slug: {
+//         en: string;
+//       };
+//       variants: MasterVariant[];
+//     };
+//     staged: {
+//       categories: {
+//         id: string;
+//         typeId: string;
+//       }[];
+//       description: {
+//         en: string;
+//       };
+//       masterVariant: MasterVariant;
+//       name: {
+//         'en-US': string;
+//       };
+//       slug: {
+//         en: string;
+//       };
+//       variants: Attributes[];
+//     };
+//   };
+//   productType: {
+//     id: string;
+//     typeId: string;
+//   };
+//   taxCategory: {
+//     id: string;
+//     typeId: string;
+//   };
+//   version: number;
+//   createdAt: string;
+//   lastModifiedAt: string;
+// }
+
+// interface MasterVariant {
+//   attributes: Attributes[];
+//   id: number;
+//   images: Image[];
+//   prices: Price[];
+//   sku: string;
+// }
+//
+// interface Attributes {
+//   name: string;
+//   value: string | number;
+// }
+// interface ImageDimensions {
+//   h: number;
+//   w: number;
+// }
+//
+// interface Image {
+//   dimensions: ImageDimensions;
+//   url: string;
+// }

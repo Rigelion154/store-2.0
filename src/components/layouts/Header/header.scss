@@ -12,6 +12,9 @@
     border-radius: 6px;
     background-color: var(--color-dark-primary);
     padding: 4px 10px;
+    @media screen and (max-width: 520px){
+      display: none;
+    }
   }
   &__input {
     background-color: var(--color-dark-primary);

@@ -3,8 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '../../../features/store';
-import { ICategory } from '../../../types/categoriesType';
-import { ROUTES } from '../../../routes/routes';
+import { ICategory } from '../../../features/categories/categoriesTypes';
 
 import './side-bar.scss';
 
@@ -54,7 +53,6 @@ const SideBar = () => {
     }
   }, [location.pathname]);
 
-  console.log('aside is loading');
   return (
     <aside
       className="section aside"
@@ -67,9 +65,7 @@ const SideBar = () => {
             : 'sticky',
       }}
     >
-      <NavLink to={ROUTES.CATEGORIES} className="aside__title">
-        Categories
-      </NavLink>
+      <h2 className="aside__title">Categories</h2>
       <ul className="aside__nav">
         {categoriesArray.map((el) => (
           <li key={el.id}>

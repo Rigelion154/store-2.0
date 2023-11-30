@@ -1,6 +1,10 @@
 import axios, { AxiosResponse } from 'axios';
 import { apiConstants, apiScopes } from '../constants/apiConstants';
-// import { IToken } from '../../types/types
+
+interface ITokenResponse {
+  refresh_token: string;
+  access_token: string;
+}
 
 export default async function getAnonymousToken() {
   const scope = Object.values(apiScopes).join(' ');
@@ -10,14 +14,19 @@ export default async function getAnonymousToken() {
   )}`;
   const authData = `grant_type=client_credentials&scope=${scope}`;
 
-  const response: AxiosResponse = await axios.post(authUrl, authData, {
-    headers: {
-      Authorization: authHeader,
-      'Content-Type': 'application/x-www-form-urlencoded',
+  const response: AxiosResponse<ITokenResponse> = await axios.post(
+    authUrl,
+    authData,
+    {
+      headers: {
+        Authorization: authHeader,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
     },
-  });
+  );
 
-  const { access_token: accessToken, refresh_token: refreshToken } =
-    response.data;
-  return { accessToken, refreshToken };
+  const access = response.data.access_token;
+  const refresh = response.data.refresh_token;
+
+  return { access, refresh };
 }

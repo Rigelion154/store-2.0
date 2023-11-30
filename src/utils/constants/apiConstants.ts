@@ -1,12 +1,8 @@
 const apiConstants = {
-  // clientId: 'HyqlWRDM7abPP4M3OK662tm0',
   clientId: 'poFit2sVUdV3U57AASZRiDCV',
-  // clientSecret: 'fyQvqZbvB2ALNbeDwKasYwYtVbhmsEOl',
   clientSecret: 'u5mzdrto-ZUf019j6PiXha7Ck-BuIYzi',
   projectKey: 'commerce-shop',
-  // authUrl: 'https://auth.us-central1.gcp.commercetools.com',
   authUrl: 'https://auth.europe-west1.gcp.commercetools.com',
-  // apiUrl: 'https://api.us-central1.gcp.commercetools.com',
   apiUrl: 'https://api.europe-west1.gcp.commercetools.com',
 };
 
@@ -50,6 +46,12 @@ const apiScopes = {
   view_shopping_lists: 'view_shopping_lists:commerce-shop',
 };
 
-// const authHeader = `Basic ${btoa(`${clientId}:${clientSecret}`)}`; Формат для передачи закодированных данных.
+const scope = Object.values(apiScopes).join(' ');
 
-export { apiConstants, apiScopes };
+// Формат для передачи закодированных данных.//
+
+const authHeader = `Basic ${btoa(
+  `${apiConstants.clientId}:${apiConstants.clientSecret}`,
+)}`;
+
+export { apiConstants, apiScopes, scope, authHeader };

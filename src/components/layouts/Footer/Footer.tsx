@@ -34,7 +34,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__container section">
-        <div className="logo">
+        <div className="footer__logo">
           <Link to={ROUTES.HOME}>
             <img src={LOGO} alt="Logo" />
           </Link>

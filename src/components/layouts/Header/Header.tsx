@@ -5,7 +5,6 @@ import { ROUTES } from '../../../routes/routes';
 import './header.scss';
 import LOGO from '../../../assets/LOGO.svg';
 import { LuUserCircle2 } from 'react-icons/lu';
-// import { RiShoppingCart2Line } from 'react-icons/ri';
 import { CiSearch } from 'react-icons/ci';
 import { RiShoppingCart2Line } from 'react-icons/ri';
 
