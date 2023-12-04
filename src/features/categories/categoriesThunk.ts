@@ -6,11 +6,7 @@ export const getCategories = createAsyncThunk(
   'categories/getCategories',
   async (_, thunkAPI) => {
     try {
-      const response = await $dataApi.get<ICategoriesResponse>('categories', {
-        // headers: {
-        //   Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        // },
-      });
+      const response = await $dataApi.get<ICategoriesResponse>('categories');
       const { results } = response.data;
       return results;
     } catch (error) {

@@ -55,7 +55,7 @@ const ProductCard = ({ product }: { product: MasterData }) => {
         </h3>
         <h3>
           <span className={styles.attribute__title}>Size:</span>{' '}
-          {product.masterVariant.attributes[1].value}
+          {product.masterVariant.attributes[1].value} "
         </h3>
         <p className={styles.description}>{product.description?.['en-US']}</p>
         <button className={`button ${styles.button}`}>Add to cart</button>

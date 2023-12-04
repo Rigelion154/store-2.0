@@ -6,11 +6,11 @@ import AppRouter from './routes/appRouter/AppRouter';
 import { AppDispatch } from './features/store';
 import { getProducts } from './features/products/productThunk';
 import { getCategories } from './features/categories/categoriesThunk';
+import { getAnonymousTokenSlice } from './features/tokens/tokenThunk';
 
 import Header from './components/layouts/Header/Header';
 import Footer from './components/layouts/Footer/Footer';
 import SideBar from './components/layouts/SideBar/SideBar';
-import { getAnonymousTokenSlice } from './features/tokens/tokenSlice';
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();

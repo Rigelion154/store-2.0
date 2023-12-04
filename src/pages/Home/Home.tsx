@@ -17,6 +17,7 @@ const Home = () => {
 
   const filteredProducts = [...productsArray]
     .filter((el) => el.masterVariant.prices[0].value.centAmount < 50000)
+    .sort(() => Math.random() - 0.5)
     .slice(0, 5);
 
   return (
