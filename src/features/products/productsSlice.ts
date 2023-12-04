@@ -1,32 +1,11 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { apiConstants } from '../../utils/constants/apiConstants';
-import axios from 'axios';
-import { MasterData } from '../../types/productsType';
-
-export const getProducts = createAsyncThunk(
-  'products/getProducts',
-  async () => {
-    const baseUrl = `${apiConstants.apiUrl}/${apiConstants.projectKey}/product-projections`;
-    const token = localStorage.getItem('accessToken');
-
-    const response = await axios(baseUrl, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    return response.data.results;
-  },
-);
-
-interface CategoriesState {
-  productsArray: MasterData[];
-  loading: 'idle' | 'pending' | 'succeeded' | 'failed';
-}
+import { createSlice } from '@reduxjs/toolkit';
+import { CategoriesState } from './productTypes';
+import { getProducts } from './productThunk';
 
 const initialState: CategoriesState = {
   productsArray: [],
-  loading: 'idle',
+  loading: false,
+  error: '',
 };
 
 export const productsSlice = createSlice({
@@ -36,6 +15,7 @@ export const productsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getProducts.fulfilled, (state, { payload }) => {
       state.productsArray = payload;
+      state.loading = true;
     });
   },
 });

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './product-bar.scss';
 import { MasterData } from '../../../types/productsType';
 import { Link } from 'react-router-dom';
+import './product-bar.scss';
 
 const ProductBar = ({
   productsArray,

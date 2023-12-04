@@ -12,7 +12,7 @@ const links = [
   {
     id: 1,
     name: '',
-    path: ROUTES.PROFILE,
+    path: ROUTES.LOGIN,
     icon: <LuUserCircle2 size={30} />,
     callback: () => {},
   },

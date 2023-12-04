@@ -1,9 +1,9 @@
 import axios, { AxiosResponse } from 'axios';
 import { apiConstants, apiScopes } from '../constants/apiConstants';
-import refreshAnonymousToken from './refreshAnonymousToken';
 
 interface ITokenResponse {
   refresh_token: string;
+  access_token: string;
 }
 
 export default async function getAnonymousToken() {
@@ -25,6 +25,8 @@ export default async function getAnonymousToken() {
     },
   );
 
-  const refreshToken = response.data.refresh_token;
-  return refreshAnonymousToken(refreshToken);
+  const access = response.data.access_token;
+  const refresh = response.data.refresh_token;
+
+  return { access, refresh };
 }

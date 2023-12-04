@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '../../../features/store';
-import { ICategory } from '../../../types/categoriesType';
+import { ICategory } from '../../../features/categories/categoriesTypes';
 
 import './side-bar.scss';
 

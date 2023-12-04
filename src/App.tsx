@@ -1,37 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { AppDispatch } from './features/store';
-import { getCategories } from './features/categories/categoriesSlice';
-import getAnonymousToken from './utils/services/getAnonymousToken';
-
 import AppRouter from './routes/appRouter/AppRouter';
+
+import { AppDispatch } from './features/store';
+import { getProducts } from './features/products/productThunk';
+import { getCategories } from './features/categories/categoriesThunk';
+import { getAnonymousTokenSlice } from './features/tokens/tokenThunk';
+
 import Header from './components/layouts/Header/Header';
 import Footer from './components/layouts/Footer/Footer';
 import SideBar from './components/layouts/SideBar/SideBar';
-import { getProducts } from './features/products/productsSlice';
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
   const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    const getToken = async () => {
-      const accessToken = await getAnonymousToken();
-      localStorage.setItem('accessToken', accessToken);
-    };
-
-    async function fetchData() {
-      setLoading(true);
-      await getToken();
-      await dispatch(getCategories());
-      await dispatch(getProducts());
+  async function fetchData() {
+    setLoading(true);
+    if (!localStorage.getItem('accessToken')) {
+      await new Promise((resolve, reject) => {
+        dispatch(getAnonymousTokenSlice()).then(resolve).catch(reject);
+      });
     }
-
-    fetchData()
-      .then(() => {})
-      .catch(() => {})
-      .finally(() => setLoading(false));
+    await dispatch(getProducts());
+    await dispatch(getCategories());
+  }
+  useEffect(() => {
+    fetchData().finally(() => setLoading(false));
   }, [dispatch]);
 
   if (loading) {
