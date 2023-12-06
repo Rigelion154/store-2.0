@@ -11,6 +11,7 @@ import { getAnonymousTokenSlice } from './features/tokens/tokenThunk';
 import Header from './components/layouts/Header/Header';
 import Footer from './components/layouts/Footer/Footer';
 import SideBar from './components/layouts/SideBar/SideBar';
+import LoaderBar from './components/ui/LoaderBar/LoaderBar';
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -26,25 +27,28 @@ function App() {
     await dispatch(getProducts());
     await dispatch(getCategories());
   }
+
   useEffect(() => {
     fetchData().finally(() => setLoading(false));
   }, [dispatch]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <div className="app">
-      <div className="container">
-        <Header />
-        <div className="main">
-          <SideBar />
-          <AppRouter />
+    <>
+      {loading ? (
+        <LoaderBar />
+      ) : (
+        <div className="app">
+          <div className="container">
+            <Header />
+            <div className="main">
+              <SideBar />
+              <AppRouter />
+            </div>
+            <Footer />
+          </div>
         </div>
-        <Footer />
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 

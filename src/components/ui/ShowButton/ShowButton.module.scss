@@ -1,0 +1,13 @@
+.button{
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  color: var(--color-accent-primary);
+  font-weight: 900;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  align-self: flex-end;
+}

@@ -18,6 +18,9 @@ export const categoriesSlice = createSlice({
       state.subCategoriesArray = payload.filter(
         (el) => el.ancestors.length > 0,
       );
+      state.loading = false;
+    });
+    builder.addCase(getCategories.pending, (state) => {
       state.loading = true;
     });
   },
