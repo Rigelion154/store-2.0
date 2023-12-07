@@ -11,5 +11,7 @@ export interface ILoginResponse {
 
 export interface ILoginState {
   isAuth: boolean;
-  customerId: string | null;
+  customerId: string;
+  loading: boolean;
+  error: string | undefined;
 }

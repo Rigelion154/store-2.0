@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ROUTES } from '../../../routes/routes';
 
 import './header.scss';
@@ -7,26 +7,13 @@ import LOGO from '../../../assets/LOGO.svg';
 import { LuUserCircle2 } from 'react-icons/lu';
 import { CiSearch } from 'react-icons/ci';
 import { RiShoppingCart2Line } from 'react-icons/ri';
-
-const links = [
-  {
-    id: 1,
-    name: '',
-    path: ROUTES.LOGIN,
-    icon: <LuUserCircle2 size={30} />,
-    callback: () => {},
-  },
-  {
-    id: 2,
-    name: '',
-    path: ROUTES.CART,
-    icon: <RiShoppingCart2Line size={30} />,
-    count: 7,
-    callback: () => {},
-  },
-];
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../features/store';
 
 const Header = () => {
+  const { pathname } = useLocation();
+  const { isAuth } = useSelector((state: RootState) => state.user);
+
   return (
     <header className="header">
       <div className="logo">
@@ -46,19 +33,33 @@ const Header = () => {
 
       <nav>
         <ul className="nav">
-          {links.map((el) => (
-            <NavLink
-              to={el.path}
-              key={el.id}
-              className={({ isActive }) =>
-                isActive ? 'nav__link nav_active' : 'nav__link'
-              }
-            >
-              <span className="nav__link-icon">{el.icon}</span>
-              <span className="nav__link-title">{el.name}</span>
-              {el.count && <span className="nav__link-size">{el.count}</span>}
-            </NavLink>
-          ))}
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? 'nav__link nav_active' : 'nav__link'
+            }
+            to={
+              isAuth
+                ? ROUTES.PROFILE
+                : pathname === ROUTES.REGISTRATION
+                ? ROUTES.REGISTRATION
+                : ROUTES.LOGIN
+            }
+          >
+            <span className="nav__link-icon">
+              {<LuUserCircle2 size={30} />}
+            </span>
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? 'nav__link nav_active' : 'nav__link'
+            }
+            to={ROUTES.CART}
+          >
+            <span className="nav__link-icon">
+              {<RiShoppingCart2Line size={30} />}
+            </span>
+            <span className="nav__link-size">7</span>
+          </NavLink>
         </ul>
       </nav>
     </header>

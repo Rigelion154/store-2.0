@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+  flex-grow: 1;
+}
+
+.link {
+  color: var(--color-accent-secondary);
+  margin-left: 10px;
+}

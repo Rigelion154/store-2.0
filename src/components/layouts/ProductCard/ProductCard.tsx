@@ -10,6 +10,7 @@ const ProductCard = ({ product }: { product: MasterData }) => {
   const discount =
     product.masterVariant.prices[0].discounted &&
     product.masterVariant.prices[0].discounted.value.centAmount / 100;
+
   return (
     <div className={`section ${styles.container}`}>
       <div className={styles.images}>
