@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { MasterData } from '../../../types/productsType';
+import { IProductProps } from '../../../types/productsType';
 import styles from './ProductCard.module.scss';
+import PriceBar from '../../ui/PriceBar/PriceBar';
+import CardButton from '../../ui/CardButton/CardButton';
 
-const ProductCard = ({ product }: { product: MasterData }) => {
+const ProductCard = ({ product }: IProductProps) => {
   const [currentImage, setCurrentImage] = useState(
     product.masterVariant.images[0].url,
   );
-  const price = product.masterVariant.prices[0].value.centAmount / 100;
-  const discount =
-    product.masterVariant.prices[0].discounted &&
-    product.masterVariant.prices[0].discounted.value.centAmount / 100;
 
   return (
     <div className={`section ${styles.container}`}>
@@ -33,23 +31,9 @@ const ProductCard = ({ product }: { product: MasterData }) => {
       </div>
       <div className={styles.description__container}>
         <h2>{product.masterVariant.sku}</h2>
-        <h2 className={discount ? styles.price : ''}>
-          {price.toLocaleString('US', {
-            currency: 'USD',
-            style: 'currency',
-            maximumFractionDigits: 0,
-          })}
-        </h2>
-        {discount && (
-          <h2>
-            <span className={styles.discount__title}>Discount: </span>
-            {discount.toLocaleString('US', {
-              currency: 'USD',
-              style: 'currency',
-              maximumFractionDigits: 0,
-            })}
-          </h2>
-        )}
+
+        <PriceBar product={product} />
+
         <h3>
           <span className={styles.attribute__title}>Color:</span>{' '}
           {product.masterVariant.attributes[0].value}
@@ -59,7 +43,8 @@ const ProductCard = ({ product }: { product: MasterData }) => {
           {product.masterVariant.attributes[1].value} "
         </h3>
         <p className={styles.description}>{product.description?.['en-US']}</p>
-        <button className={`button ${styles.button}`}>Add to cart</button>
+
+        <CardButton product={product} />
       </div>
     </div>
   );

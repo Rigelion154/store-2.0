@@ -9,7 +9,7 @@
   row-gap: 15px;
   flex-wrap: wrap;
   padding: 0;
-  @media screen and (max-width: 1300px){
+  @media screen and (max-width: 1300px) {
     justify-content: center;
   }
 }
@@ -66,8 +66,7 @@
   }
 }
 
-
-.sale__img-gadget{
+.sale__img-gadget {
   position: absolute;
   left: 31%;
   bottom: -30px;
@@ -75,4 +74,3 @@
     display: none;
   }
 }
-

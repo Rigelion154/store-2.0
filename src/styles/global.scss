@@ -4,12 +4,12 @@
 :root {
   --color-dark-primary: #191919;
   --color-dark-secondary: #212123;
-  --color-title: #F6F6F7;
-  --color-subtitle: #B8B8B8;
-  --color-accent-primary: #6C3EB8;
-  --color-accent-secondary: #8B57C6;
+  --color-title: #f6f6f7;
+  --color-subtitle: #b8b8b8;
+  --color-accent-primary: #6c3eb8;
+  --color-accent-secondary: #8b57c6;
   --color-text-primary: #576067;
-  --color-text-secondary: #616E74;
+  --color-text-secondary: #616e74;
   --color-error: red;
 }
 
@@ -75,6 +75,8 @@ body {
   &:hover {
     color: var(--color-accent-primary);
     background-color: white;
-    transition: color, background-color .7s ease-out;
+    transition:
+      color,
+      background-color 0.7s ease-out;
   }
 }

@@ -11,3 +11,9 @@
   color: var(--color-accent-secondary);
   margin-left: 10px;
 }
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  align-items: center;
+}

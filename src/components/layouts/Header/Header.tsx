@@ -13,6 +13,7 @@ import { RootState } from '../../../features/store';
 const Header = () => {
   const { pathname } = useLocation();
   const { isAuth } = useSelector((state: RootState) => state.user);
+  const { lineItems } = useSelector((state: RootState) => state.cart);
 
   return (
     <header className="header">
@@ -58,7 +59,7 @@ const Header = () => {
             <span className="nav__link-icon">
               {<RiShoppingCart2Line size={30} />}
             </span>
-            <span className="nav__link-size">7</span>
+            <span className="nav__link-size">{lineItems.length}</span>
           </NavLink>
         </ul>
       </nav>

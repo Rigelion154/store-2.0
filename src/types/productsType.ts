@@ -1,3 +1,6 @@
+export interface IProductProps {
+  product: MasterData;
+}
 export type Price = {
   id: string;
   value: {

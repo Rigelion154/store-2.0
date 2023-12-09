@@ -1,11 +1,9 @@
 import axios from 'axios';
-import { apiConstants } from '../utils/constants/apiConstants';
-import refreshAnonymousToken from '../utils/services/refreshAnonymousToken';
-
-const baseURL = `${apiConstants.apiUrl}/${apiConstants.projectKey}/`;
+import { dataURL } from '../utils/constants/api/apiConstants';
+import refreshAnonymousToken from '../services/refreshAnonymousToken';
 
 export const $dataApi = axios.create({
-  baseURL,
+  baseURL: dataURL,
 });
 
 $dataApi.interceptors.request.use((config) => {

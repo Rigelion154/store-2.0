@@ -4,13 +4,13 @@ import { ICategoriesResponse } from './categoriesTypes';
 
 export const getCategories = createAsyncThunk(
   'categories/getCategories',
-  async (_, thunkAPI) => {
+  async (_, { rejectWithValue }) => {
     try {
       const response = await $dataApi.get<ICategoriesResponse>('categories');
       const { results } = response.data;
       return results;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return rejectWithValue(error);
     }
   },
 );

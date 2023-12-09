@@ -1,15 +1,4 @@
-const apiConstants = {
-  // clientId: 'poFit2sVUdV3U57AASZRiDCV',
-  clientId: 'h3LI6j7IUvxK-BdppivuVnbn',
-  // clientSecret: 'u5mzdrto-ZUf019j6PiXha7Ck-BuIYzi',
-  clientSecret: 'nmFt_Nj2ZY4E1GF_0DDy2z44KSgZDCpx',
-  // projectKey: 'shop-v2',
-  projectKey: 'shop-v2',
-  authUrl: 'https://auth.europe-west1.gcp.commercetools.com',
-  apiUrl: 'https://api.europe-west1.gcp.commercetools.com',
-};
-
-const apiScopes = {
+export const apiScopes = {
   manage_customers: 'manage_customers:shop-v2',
   create_anonymous_token: 'create_anonymous_token:shop-v2',
   manage_my_profile: 'manage_my_profile:shop-v2',
@@ -48,13 +37,3 @@ const apiScopes = {
   view_tax_categories: 'view_tax_categories:shop-v2',
   view_shopping_lists: 'view_shopping_lists:shop-v2',
 };
-
-const scope = Object.values(apiScopes).join(' ');
-
-// Формат для передачи закодированных данных.//
-
-const authHeader = `Basic ${btoa(
-  `${apiConstants.clientId}:${apiConstants.clientSecret}`,
-)}`;
-
-export { apiConstants, apiScopes, scope, authHeader };
