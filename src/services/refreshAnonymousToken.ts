@@ -1,4 +1,4 @@
-import { $tokenApi } from '../../axios/tokenApi';
+import { $tokenApi } from '../axios/tokenApi';
 
 interface ITokenResponse {
   access_token: string;

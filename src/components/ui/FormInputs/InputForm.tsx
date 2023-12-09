@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Inputs.module.scss';
 import { IFormProps } from './inputTypes';
-import { clearErrors } from '../../../features/userApi/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../../features/store';
 
 const InputForm = ({
   type,
@@ -14,8 +11,6 @@ const InputForm = ({
   showButton,
 }: IFormProps) => {
   const [error, setError] = useState<string[]>([]);
-  const dispatch: AppDispatch = useDispatch();
-  const { error: requestError } = useSelector((state: RootState) => state.user);
   return (
     <div className={styles.container}>
       <div className={styles.input__wrapper}>
@@ -30,7 +25,6 @@ const InputForm = ({
           onChange={(e) => {
             setValue(e.target.value);
             setError(validateFunction(e.target.value));
-            if (requestError) dispatch(clearErrors());
           }}
         />
         {showButton}

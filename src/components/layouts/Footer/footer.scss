@@ -25,7 +25,6 @@
 }
 
 .footer__social-link:hover {
-  transition: color .5s ease-out;
+  transition: color 0.5s ease-out;
   color: var(--color-accent-primary);
 }
-

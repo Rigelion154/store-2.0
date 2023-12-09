@@ -7,7 +7,7 @@
   row-gap: 35px;
   top: 0;
   left: 0;
-  @media screen and (max-width: 1320px){
+  @media screen and (max-width: 1320px) {
     width: 100%;
     height: unset;
     align-items: center;
@@ -32,7 +32,7 @@
 
 .active {
   color: var(--color-accent-secondary);
-  transition: color .5s;
+  transition: color 0.5s;
 }
 
 .cat__links {
