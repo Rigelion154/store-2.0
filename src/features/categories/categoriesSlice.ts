@@ -6,12 +6,21 @@ const initialState: CategoriesState = {
   categoriesArray: [],
   subCategoriesArray: [],
   loading: false,
+  activeSubCategory: [],
+  activeCategoryId: '',
 };
 
 export const categoriesSlice = createSlice({
   name: 'categories',
   initialState,
-  reducers: {},
+  reducers: {
+    setActiveCategory(state, action) {
+      state.activeCategoryId = action.payload;
+      state.activeSubCategory = state.subCategoriesArray.filter(
+        (sub) => sub.ancestors[0].id === action.payload,
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getCategories.fulfilled, (state, { payload }) => {
       state.categoriesArray = payload.filter((el) => el.ancestors.length === 0);
@@ -25,3 +34,5 @@ export const categoriesSlice = createSlice({
     });
   },
 });
+
+export const { setActiveCategory } = categoriesSlice.actions;

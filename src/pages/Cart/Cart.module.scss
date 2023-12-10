@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   flex-grow: 1;
+  min-height: 50vh;
 }
 
 .link__wrapper {
@@ -12,8 +13,10 @@
   align-items: flex-start;
   justify-content: center;
   row-gap: 15px;
+  font-size: 1.7rem;
 }
 
 .link {
-  color: var(--color-accent-primary)
+  color: var(--color-accent-primary);
+  margin-left: 5px;
 }

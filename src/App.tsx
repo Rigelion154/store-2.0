@@ -9,7 +9,7 @@ import { getCategories } from './features/categories/categoriesThunk';
 
 import Header from './components/layouts/Header/Header';
 import Footer from './components/layouts/Footer/Footer';
-import SideBar from './components/layouts/SideBar/SideBar';
+// import SideBar from './components/layouts/SideBar/SideBar';
 import LoaderBar from './components/ui/LoaderBar/LoaderBar';
 import { getCarts } from './services/cart/getCarts';
 import { getAnonymousToken } from './services/Auth/getAnonymousToken';
@@ -47,7 +47,7 @@ function App() {
           <div className="container">
             <Header />
             <div className="main">
-              <SideBar />
+              {/*<SideBar />*/}
               <AppRouter />
             </div>
             <Footer />

@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import styles from './Auth.module.scss';
+
 import { ROUTES } from '../../routes/routes';
-import LoaderBar from '../../components/ui/LoaderBar/LoaderBar';
-import LoginForm from '../../components/ui/LoginForm/LoginForm';
 import { useAuth } from '../../hooks/useAuth';
-import InputForm from '../../components/ui/FormInputs/InputForm';
 import { validateNames } from '../../utils/validateForms/validateName';
 
-const Auth2 = () => {
+import LoaderBar from '../../components/ui/LoaderBar/LoaderBar';
+import LoginForm from '../../components/ui/LoginForm/LoginForm';
+import InputForm from '../../components/ui/FormInputs/InputForm';
+
+import styles from './Auth.module.scss';
+
+const Auth = () => {
   const { pathname } = useLocation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -71,4 +74,4 @@ const Auth2 = () => {
   );
 };
 
-export default Auth2;
+export default Auth;
