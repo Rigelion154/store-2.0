@@ -27,4 +27,6 @@ export interface CategoriesState {
   categoriesArray: ICategory[];
   subCategoriesArray: ICategory[];
   loading: boolean;
+  activeSubCategory: ICategory[];
+  activeCategoryId: string;
 }

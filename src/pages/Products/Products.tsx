@@ -1,14 +1,19 @@
 import React from 'react';
-import ProductCard from '../../components/layouts/ProductCard/ProductCard';
-import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useLocation, useParams } from 'react-router-dom';
+
 import { RootState } from '../../features/store';
+
+import ProductCard from '../../components/layouts/ProductCard/ProductCard';
 
 import styles from './Products.module.scss';
 
 const Products = () => {
   const { current, slug } = useParams();
+  const location = useLocation();
+  const { pathname } = location;
   const { productsArray } = useSelector((state: RootState) => state.products);
+
   const categoryProducts = productsArray.filter(
     (el) => el.masterVariant.attributes[2].value === current,
   );
@@ -16,7 +21,11 @@ const Products = () => {
     (el) => el.key.split('_')[0] === slug,
   );
   const currentProducts =
-    subCategoryProducts.length > 0 ? subCategoryProducts : categoryProducts;
+    pathname === '/categories'
+      ? productsArray
+      : subCategoryProducts.length > 0
+      ? subCategoryProducts
+      : categoryProducts;
 
   return (
     <div className={styles.container}>

@@ -1,10 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../features/store';
-import { logout } from '../../features/userApi/userSlice';
 import { Link } from 'react-router-dom';
-import { getAnonymousToken } from '../../services/Auth/getAnonymousToken';
+
+import { AppDispatch } from '../../features/store';
 import { removeCart } from '../../features/cart/cartSlice';
+import { logout } from '../../features/userApi/userSlice';
+
+import { getAnonymousToken } from '../../services/Auth/getAnonymousToken';
+
+import styles from './Profile.module.scss';
 
 const Profile = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -17,7 +21,7 @@ const Profile = () => {
   };
 
   return (
-    <div>
+    <div className={`${styles.container} section`}>
       <Link to={'/'} className="button" onClick={handleLogout}>
         Logout
       </Link>

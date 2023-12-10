@@ -1,0 +1,21 @@
+.container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  column-gap: 20px;
+  @media screen and (max-width: 768px) {
+    column-gap: 0;
+  }
+}
+
+.aside {
+  position: sticky;
+  top: 80px;
+  left: 0;
+  flex-grow: 1;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}

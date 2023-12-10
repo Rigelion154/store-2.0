@@ -1,10 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
+import { RootState } from '../../features/store';
 
 import Promo from '../../components/ui/Promo/Promo';
 import ProductBar from '../../components/ui/ProductBar/ProductBar';
 import Sale from '../../components/ui/Sale/Sale';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../features/store';
 
 const Home = () => {
   const productsArray = useSelector(
