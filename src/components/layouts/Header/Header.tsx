@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { ROUTES } from '../../../routes/routes';
 
-import './header.scss';
-import LOGO from '../../../assets/LOGO.svg';
+import { ROUTES } from '../../../routes/routes';
+import { RootState } from '../../../features/store';
+
+import AsideBar from '../Aside/AsideBar';
+
 import { LuUserCircle2 } from 'react-icons/lu';
 import { CiSearch } from 'react-icons/ci';
 import { RiShoppingCart2Line } from 'react-icons/ri';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../features/store';
 import { IoIosMenu } from 'react-icons/io';
-import AsideBar from '../Aside/AsideBar';
+import LOGO from '../../../assets/LOGO.svg';
+
+import './header.scss';
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -20,6 +23,10 @@ const Header = () => {
 
   const burgerHandler = () => {
     setIsOpen(!isOpen);
+  };
+
+  const asideHandler = () => {
+    if (isOpen) setIsOpen(!isOpen);
   };
 
   return (
@@ -52,6 +59,9 @@ const Header = () => {
                   ? ROUTES.REGISTRATION
                   : ROUTES.LOGIN
               }
+              onClick={() => {
+                if (isOpen) setIsOpen(!isOpen);
+              }}
             >
               <span className="nav__link-icon">
                 {<LuUserCircle2 size={30} />}
@@ -62,6 +72,9 @@ const Header = () => {
                 isActive ? 'nav__link nav_active' : 'nav__link'
               }
               to={ROUTES.CART}
+              onClick={() => {
+                if (isOpen) setIsOpen(!isOpen);
+              }}
             >
               <span className="nav__link-icon">
                 {<RiShoppingCart2Line size={30} />}
@@ -70,7 +83,7 @@ const Header = () => {
             </NavLink>
           </ul>
         </nav>
-        {isOpen && <AsideBar />}
+        {isOpen && <AsideBar asideHandler={asideHandler} />}
       </div>
       <button className="burger" onClick={burgerHandler}>
         <IoIosMenu size={40} />
