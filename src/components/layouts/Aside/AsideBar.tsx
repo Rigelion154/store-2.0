@@ -6,7 +6,11 @@ import { setActiveCategory } from '../../../features/categories/categoriesSlice'
 
 import styles from './AsideBar.module.scss';
 
-const AsideBar = () => {
+interface IAsideProps {
+  asideHandler?(): void;
+}
+
+const AsideBar = ({ asideHandler }: IAsideProps) => {
   const dispatch: AppDispatch = useDispatch();
   const { categoriesArray, activeSubCategory, activeCategoryId } = useSelector(
     ({ categories }: RootState) => categories,
@@ -33,6 +37,9 @@ const AsideBar = () => {
             ? `${styles.aside__title} ${styles.active}`
             : styles.aside__title
         }
+        onClick={() => {
+          if (asideHandler) asideHandler();
+        }}
       >
         Categories
       </NavLink>
@@ -66,6 +73,9 @@ const AsideBar = () => {
                           ? `${styles.sub__link} ${styles.active}`
                           : styles.sub__link
                       }
+                      onClick={() => {
+                        if (asideHandler) asideHandler();
+                      }}
                     >
                       {sub.key}
                     </NavLink>

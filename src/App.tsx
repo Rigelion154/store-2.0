@@ -6,14 +6,13 @@ import AppRouter from './routes/appRouter/AppRouter';
 import { AppDispatch } from './features/store';
 import { getProducts } from './features/products/productThunk';
 import { getCategories } from './features/categories/categoriesThunk';
-
-import Header from './components/layouts/Header/Header';
-import Footer from './components/layouts/Footer/Footer';
-// import SideBar from './components/layouts/SideBar/SideBar';
-import LoaderBar from './components/ui/LoaderBar/LoaderBar';
 import { getCarts } from './services/cart/getCarts';
 import { getAnonymousToken } from './services/Auth/getAnonymousToken';
 import { getCartById } from './services/cart/getCartById';
+
+import Header from './components/layouts/Header/Header';
+import Footer from './components/layouts/Footer/Footer';
+import LoaderBar from './components/ui/LoaderBar/LoaderBar';
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -41,13 +40,14 @@ function App() {
   return (
     <>
       {loading ? (
-        <LoaderBar />
+        <div className="loader__wrapper">
+          <LoaderBar />
+        </div>
       ) : (
         <div className="app">
           <div className="container">
             <Header />
             <div className="main">
-              {/*<SideBar />*/}
               <AppRouter />
             </div>
             <Footer />
