@@ -37,7 +37,12 @@ const CardButton = ({ product }: IProductProps) => {
 
   const removeFromCartHandler = async () => {
     if (isInCart) {
-      await dispatch(removeFromCart({ lineItemId: productInCart.id }));
+      await dispatch(
+        removeFromCart({
+          lineItemId: productInCart.id,
+          quantity: productInCart.quantity,
+        }),
+      );
       setIsInCart(false);
     }
   };

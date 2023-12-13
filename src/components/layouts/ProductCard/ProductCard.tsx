@@ -3,6 +3,7 @@ import { IProductProps } from '../../../types/productsType';
 import styles from './ProductCard.module.scss';
 import PriceBar from '../../ui/PriceBar/PriceBar';
 import CardButton from '../../ui/CardButton/CardButton';
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product }: IProductProps) => {
   const [currentImage, setCurrentImage] = useState(
@@ -30,7 +31,13 @@ const ProductCard = ({ product }: IProductProps) => {
         </div>
       </div>
       <div className={styles.description__container}>
-        <h2>{product.masterVariant.sku}</h2>
+        <Link
+          to={`/categories/${product.masterVariant.attributes[2].value}/${
+            product.key.split('_')[0]
+          }/${product.slug['en-US']}`}
+        >
+          {product.masterVariant.sku}
+        </Link>
 
         <PriceBar product={product} />
 

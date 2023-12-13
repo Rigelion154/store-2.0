@@ -1,6 +1,6 @@
 import { $dataApi } from '../../axios/dataApi';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ICart } from './cartTypes';
+import { ICart } from '../../types/cartTypes';
 
 export const createCart = createAsyncThunk('cartSlice/createCart', async () => {
   const cartData = {

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createCart } from '../../services/cart/createCart';
 import { getCartById } from '../../services/cart/getCartById';
-import { ICart } from '../../services/cart/cartTypes';
+import { ICart } from '../../types/cartTypes';
 import { addToCart } from '../../services/cart/addToCart';
 import { removeFromCart } from '../../services/cart/removeFromCart';
 import { getActiveCarts } from '../../services/cart/getCarts';

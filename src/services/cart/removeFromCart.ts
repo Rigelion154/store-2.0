@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../../features/store';
 import { $dataApi } from '../../axios/dataApi';
-import { ICart } from './cartTypes';
+import { ICart } from '../../types/cartTypes';
 
 interface IRemoveFormCart {
   lineItemId: string;

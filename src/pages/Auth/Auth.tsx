@@ -1,27 +1,48 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { ROUTES } from '../../routes/routes';
-import { useAuth } from '../../hooks/useAuth';
-import { validateNames } from '../../utils/validateForms/validateName';
+import { authHandler } from '../../utils/authHandler';
+import { AppDispatch } from '../../features/store';
+import { schema } from '../../utils/validateForms/schema';
 
 import LoaderBar from '../../components/ui/LoaderBar/LoaderBar';
-import LoginForm from '../../components/ui/LoginForm/LoginForm';
+import ShowButton from '../../components/ui/ShowButton/ShowButton';
 import InputForm from '../../components/ui/FormInputs/InputForm';
 
 import styles from './Auth.module.scss';
 
+export interface IFormData {
+  firstName?: string | undefined;
+  email: string;
+  password: string;
+}
+
 const Auth = () => {
+  const dispatch: AppDispatch = useDispatch();
   const { pathname } = useLocation();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [firstName, setName] = useState('');
-  const { loading, error, fetchingAuth } = useAuth(
-    email,
-    password,
-    pathname,
-    firstName,
-  );
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    reset,
+  } = useForm<IFormData>({
+    mode: 'onChange',
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = async (data: IFormData) => {
+    await authHandler(dispatch, pathname, data, setLoading, setError, navigate);
+    reset();
+  };
 
   return (
     <div className={`${styles.container} section`}>
@@ -30,26 +51,41 @@ const Auth = () => {
       ) : (
         <div className={styles.container}>
           <h2>Sign In</h2>
-          <form className={styles.form} onSubmit={fetchingAuth}>
+          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             {pathname === ROUTES.REGISTRATION && (
               <InputForm
+                register={register}
                 type="text"
-                value={firstName}
-                setValue={setName}
-                placeholder="Name *"
-                validateFunction={validateNames}
+                placeholder="First name *"
+                message={errors.firstName?.message}
+                fieldName="firstName"
               />
             )}
-            <LoginForm
-              email={email}
-              setEmail={setEmail}
-              password={password}
-              setPassword={setPassword}
+            <InputForm
+              register={register}
+              type="email"
+              placeholder="Email"
+              message={errors.email?.message}
+              fieldName="email"
             />
-            <button className="button" type="submit">
+            <InputForm
+              register={register}
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              message={errors.password?.message}
+              fieldName="password"
+              showButton={
+                <ShowButton
+                  showPassword={showPassword}
+                  setShowPassword={setShowPassword}
+                />
+              }
+            />
+
+            <button className="button" type="submit" disabled={!isValid}>
               Submit
             </button>
-            {error && <p>{error}</p>}
+            {error && <p className="error__message">{error}</p>}
           </form>
         </div>
       )}
