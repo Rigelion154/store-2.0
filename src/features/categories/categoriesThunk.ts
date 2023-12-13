@@ -8,6 +8,7 @@ export const getCategories = createAsyncThunk(
     try {
       const response = await $dataApi.get<ICategoriesResponse>('categories');
       const { results } = response.data;
+      console.log(results);
       return results;
     } catch (error) {
       return rejectWithValue(error);

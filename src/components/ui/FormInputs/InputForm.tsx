@@ -1,35 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Inputs.module.scss';
-import { IFormProps } from './inputTypes';
+import { UseFormRegister } from 'react-hook-form';
+
+type FormData = {
+  firstName?: string | undefined;
+  email: string;
+  password: string;
+};
 
 const InputForm = ({
+  register,
   type,
-  value,
-  setValue,
   placeholder,
-  validateFunction,
   showButton,
-}: IFormProps) => {
-  const [error, setError] = useState<string[]>([]);
+  message,
+  fieldName,
+}: {
+  register: UseFormRegister<FormData>;
+  type: string;
+  placeholder: string;
+  showButton?: React.ReactNode;
+  message: string | undefined;
+  fieldName: 'firstName' | 'email' | 'password';
+}) => {
   return (
     <div className={styles.container}>
       <div className={styles.input__wrapper}>
         <input
-          className={
-            error.length > 0 ? `${styles.input} ${styles.error}` : styles.input
-          }
-          type={type}
-          required={true}
+          {...register(fieldName)}
           placeholder={placeholder}
-          value={value}
-          onChange={(e) => {
-            setValue(e.target.value);
-            setError(validateFunction(e.target.value));
-          }}
+          type={type}
+          className={message ? `${styles.input} ${styles.error}` : styles.input}
+          required
         />
         {showButton}
       </div>
-      {error.length > 0 && <span className={styles.message}>{error[0]}</span>}
+      <p className="error__message">{message}</p>
     </div>
   );
 };

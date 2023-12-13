@@ -1,4 +1,4 @@
-import { Asset, Price } from '../../types/productsType';
+import { Asset, Price } from './productsType';
 
 export interface ILineItem {
   id: string;

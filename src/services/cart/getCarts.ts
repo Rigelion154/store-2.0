@@ -1,5 +1,5 @@
 import { $dataApi } from '../../axios/dataApi';
-import { ICart } from './cartTypes';
+import { ICart } from '../../types/cartTypes';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 interface IGetCartsResponse {

@@ -16,11 +16,10 @@ import LoaderBar from './components/ui/LoaderBar/LoaderBar';
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   async function fetchData() {
     const cartId = localStorage.getItem('cartId');
-
     setLoading(true);
     if (!localStorage.getItem('accessToken')) {
       await getAnonymousToken();
@@ -36,7 +35,6 @@ function App() {
   useEffect(() => {
     fetchData().finally(() => setLoading(false));
   }, [dispatch]);
-
   return (
     <>
       {loading ? (

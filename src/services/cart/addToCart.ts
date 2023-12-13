@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { $dataApi } from '../../axios/dataApi';
 import { RootState } from '../../features/store';
-import { ICart } from './cartTypes';
+import { ICart } from '../../types/cartTypes';
 
 interface IAddRequest {
   productId: string;

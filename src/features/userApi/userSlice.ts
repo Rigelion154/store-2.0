@@ -5,14 +5,14 @@ export interface UserState {
   isAuth: boolean;
   userId: string;
   loading: boolean;
-  error: string | undefined;
+  error: string[];
 }
 
 const initialState: UserState = {
   isAuth: !!localStorage.getItem('userId'),
   userId: localStorage.getItem('userId') || '',
   loading: false,
-  error: '',
+  error: [],
 };
 
 export const userSlice = createSlice({
@@ -24,6 +24,9 @@ export const userSlice = createSlice({
       state.userId = '';
       localStorage.removeItem('userId');
     },
+    setAuthError(state, { payload }) {
+      state.error = payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(userSignIn.fulfilled, (state, { payload }) => {
@@ -34,4 +37,4 @@ export const userSlice = createSlice({
   },
 });
 
-export const { logout } = userSlice.actions;
+export const { logout, setAuthError } = userSlice.actions;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ILineItem } from '../../../services/cart/cartTypes';
+import { ILineItem } from '../../../types/cartTypes';
 import styles from './CartItem.module.scss';
 import { IoIosCloseCircle } from 'react-icons/io';
 import { removeFromCart } from '../../../services/cart/removeFromCart';

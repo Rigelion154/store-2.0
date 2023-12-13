@@ -29,4 +29,5 @@ export interface CategoriesState {
   loading: boolean;
   activeSubCategory: ICategory[];
   activeCategoryId: string;
+  categories: Record<string, string>;
 }

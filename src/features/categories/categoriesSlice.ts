@@ -8,6 +8,7 @@ const initialState: CategoriesState = {
   loading: false,
   activeSubCategory: [],
   activeCategoryId: '',
+  categories: {},
 };
 
 export const categoriesSlice = createSlice({
@@ -27,6 +28,7 @@ export const categoriesSlice = createSlice({
       state.subCategoriesArray = payload.filter(
         (el) => el.ancestors.length > 0,
       );
+      payload.forEach((cat) => (state.categories[cat.key] = cat.id));
       state.loading = false;
     });
     builder.addCase(getCategories.pending, (state) => {
