@@ -13,6 +13,7 @@ import { getCartById } from './services/cart/getCartById';
 import Header from './components/layouts/Header/Header';
 import Footer from './components/layouts/Footer/Footer';
 import LoaderBar from './components/ui/LoaderBar/LoaderBar';
+import Burger from './components/layouts/Burger/Burger';
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -49,6 +50,7 @@ function App() {
               <AppRouter />
             </div>
             <Footer />
+            <Burger />
           </div>
         </div>
       )}

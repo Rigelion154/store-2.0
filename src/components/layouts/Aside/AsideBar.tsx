@@ -5,18 +5,20 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { setActiveCategory } from '../../../features/categories/categoriesSlice';
 
 import styles from './AsideBar.module.scss';
+import { setIsOpen } from '../../../features/userApi/userSlice';
 
-interface IAsideProps {
-  asideHandler?(): void;
-}
-
-const AsideBar = ({ asideHandler }: IAsideProps) => {
+const AsideBar = () => {
   const dispatch: AppDispatch = useDispatch();
   const { categoriesArray, activeSubCategory, activeCategoryId } = useSelector(
     ({ categories }: RootState) => categories,
   );
+  const { isOpen } = useSelector((state: RootState) => state.user);
   const location = useLocation();
   const currentPath = location.pathname;
+
+  const burgerHandler = () => {
+    if (isOpen) dispatch(setIsOpen());
+  };
 
   useEffect(() => {
     if (
@@ -37,9 +39,7 @@ const AsideBar = ({ asideHandler }: IAsideProps) => {
             ? `${styles.aside__title} ${styles.active}`
             : styles.aside__title
         }
-        onClick={() => {
-          if (asideHandler) asideHandler();
-        }}
+        onClick={burgerHandler}
       >
         Categories
       </NavLink>
@@ -73,9 +73,7 @@ const AsideBar = ({ asideHandler }: IAsideProps) => {
                           ? `${styles.sub__link} ${styles.active}`
                           : styles.sub__link
                       }
-                      onClick={() => {
-                        if (asideHandler) asideHandler();
-                      }}
+                      onClick={burgerHandler}
                     >
                       {sub.key}
                     </NavLink>

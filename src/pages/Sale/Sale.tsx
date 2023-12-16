@@ -8,8 +8,7 @@ import { ROUTES } from '../../routes/routes';
 import { MasterData } from '../../types/productsType';
 
 const Sale = () => {
-  const location = useLocation();
-  const { pathname } = location;
+  const { pathname } = useLocation();
   const { saleProducts, lessThenProducts, randomProducts } = useSelector(
     (state: RootState) => state.products,
   );
