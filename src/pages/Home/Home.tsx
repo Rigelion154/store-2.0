@@ -1,32 +1,32 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import { ROUTES } from '../../routes/routes';
 import { RootState } from '../../features/store';
 
 import Promo from '../../components/ui/Promo/Promo';
 import ProductBar from '../../components/ui/ProductBar/ProductBar';
-import Sale from '../../components/ui/Sale/Sale';
+import SaleBar from '../../components/ui/SaleBar/SaleBar';
 
 const Home = () => {
-  const productsArray = useSelector(
-    (state: RootState) => state.products.productsArray,
+  const { randomProducts, lessThenProducts } = useSelector(
+    (state: RootState) => state.products,
   );
-
-  const randomProducts = [...productsArray]
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 5);
-
-  const filteredProducts = [...productsArray]
-    .filter((el) => el.masterVariant.prices[0].value.centAmount < 50000)
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 5);
 
   return (
     <>
       <Promo />
-      <ProductBar productsArray={randomProducts} title="Trending" />
-      <Sale />
-      <ProductBar productsArray={filteredProducts} title="Less than 500$" />
+      <ProductBar
+        productsArray={randomProducts}
+        link={ROUTES.TRENDING}
+        title="Trending"
+      />
+      <SaleBar />
+      <ProductBar
+        productsArray={lessThenProducts.slice(0, 5)}
+        link={ROUTES.LEES_THEN}
+        title="Less than 500$"
+      />
     </>
   );
 };

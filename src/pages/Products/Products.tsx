@@ -13,7 +13,7 @@ import LoaderBar from '../../components/ui/LoaderBar/LoaderBar';
 import styles from './Products.module.scss';
 
 const Products = () => {
-  const { current, slug } = useParams();
+  const { category, subCategory, slug } = useParams();
   const { categories } = useSelector((state: RootState) => state.categories);
   const [products, setProducts] = useState<MasterData[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -21,24 +21,32 @@ const Products = () => {
 
   const getProductsData = useCallback(async () => {
     setLoading(true);
-    const categoryId =
-      categories[slug as string] || categories[current as string];
     try {
-      const response = await getFilteredProducts({ categoryId });
+      let params = {};
+      if (slug) {
+        params = { slug: slug };
+      } else if (subCategory) {
+        params = { categoryId: categories[subCategory] };
+      } else if (category) {
+        params = { categoryId: categories[category] };
+      }
+      const response = await getFilteredProducts(params);
       setProducts(response);
     } catch (err) {
       if (err instanceof AxiosError) {
         setError(err.response?.data.message);
       }
-      setLoading(false);
+      if (err instanceof Error) {
+        setError(err.message);
+      }
     }
     window.scrollTo(0, 0);
     setLoading(false);
-  }, [current, slug]);
+  }, [category, subCategory, slug]);
 
   useEffect(() => {
     getProductsData().catch(() => {});
-  }, [current, slug]);
+  }, [category, subCategory, slug]);
 
   return (
     <>
