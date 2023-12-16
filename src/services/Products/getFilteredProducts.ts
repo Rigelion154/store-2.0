@@ -2,7 +2,7 @@ import { $dataApi } from '../../axios/dataApi';
 import { IProductsResponse } from '../../features/products/productTypes';
 
 interface IFilteredRequest {
-  categoryId: string;
+  categoryId?: string;
   color?: string | null;
   minPrice?: string | null;
   maxPrice?: string | null;
@@ -10,6 +10,7 @@ interface IFilteredRequest {
   sortType?: string;
   sortValue?: string;
   limit?: number;
+  slug?: string;
 }
 
 export const getFilteredProducts = async (params: IFilteredRequest) => {
@@ -18,9 +19,14 @@ export const getFilteredProducts = async (params: IFilteredRequest) => {
   const filter = [];
   const sort = [];
 
+  if (params.slug) {
+    filter.push(`slug.en-US:"${params.slug}"`);
+  }
+
   if (params.sortType && params.sortValue) {
     sort.push(`${params.sortType} ${params.sortValue}`);
   }
+
   if (params.maxPrice && params.maxPrice) {
     filter.push(
       `variants.price.centAmount:range(${params.minPrice || '0'} to ${

@@ -4,8 +4,10 @@ import './sale.scss';
 import SALE from '../../../assets/SALE.png';
 import SHOE from '../../../assets/shoes.png';
 import GADGET from '../../../assets/gadget.png';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../../routes/routes';
 
-const Sale = () => {
+const SaleBar = () => {
   return (
     <section className="sale">
       <div className="section sale__container">
@@ -13,10 +15,12 @@ const Sale = () => {
           <h2 className="sale__title">
             NEW YEAR <span>SALE</span>
           </h2>
-          <button className="button sale__button">See more</button>
+          <Link to={ROUTES.SALE} className="button sale__button">
+            See more
+          </Link>
         </div>
         <div className="sale__img">
-          <img src={SALE} alt="Sale img" />
+          <img src={SALE} alt="SaleBar img" />
         </div>
         <div className="sale__img-shoe">
           <img src={SHOE} alt="Shoe" />
@@ -29,4 +33,4 @@ const Sale = () => {
   );
 };
 
-export default Sale;
+export default SaleBar;

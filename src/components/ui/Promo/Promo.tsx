@@ -5,6 +5,7 @@ import PROMO from '../../../assets/PROMO.png';
 import AsideBar from '../../layouts/Aside/AsideBar';
 
 import styles from './Promo.module.scss';
+import { Link } from 'react-router-dom';
 
 const Promo = () => {
   return (
@@ -20,11 +21,15 @@ const Promo = () => {
               the bestseller of 2022
             </h3>
             <h3 className={styles.promo__description__title}>
-              LENNON r2d2 <br /> with NVIDIA 5090 TI
+              ASUS ROG <br /> with NVIDIA 4090 TI
             </h3>
-            <button className="promo__description-button button" type="button">
+            <Link
+              to={'/categories/laptops/asus/asus-rog-strix'}
+              className="promo__description-button button"
+              type="button"
+            >
               Shop Now
-            </button>
+            </Link>
           </div>
           <img src={PROMO} alt="promo" className={styles.promo__img} />
         </div>

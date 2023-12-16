@@ -6,6 +6,9 @@ export interface IProductsResponse {
 
 export interface CategoriesState {
   productsArray: MasterData[];
+  lessThenProducts: MasterData[];
+  saleProducts: MasterData[];
+  randomProducts: MasterData[];
   loading: boolean;
   error: string | undefined;
 }

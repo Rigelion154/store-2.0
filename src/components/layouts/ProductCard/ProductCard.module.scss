@@ -9,6 +9,10 @@
   }
 }
 
+.link {
+  font-size: 2rem;
+}
+
 .images {
   display: flex;
   align-items: center;
@@ -83,6 +87,10 @@
   max-width: 400px;
   height: 150px;
   overflow-y: auto;
+}
+
+.description__product {
+  max-width: 100%;
 }
 
 @media screen and (max-width: 530px) {

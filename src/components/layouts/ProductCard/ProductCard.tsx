@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { IProductProps } from '../../../types/productsType';
-import styles from './ProductCard.module.scss';
 import PriceBar from '../../ui/PriceBar/PriceBar';
 import CardButton from '../../ui/CardButton/CardButton';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import styles from './ProductCard.module.scss';
 
 const ProductCard = ({ product }: IProductProps) => {
+  const { slug } = useParams();
   const [currentImage, setCurrentImage] = useState(
     product.masterVariant.images[0].url,
   );
@@ -35,6 +36,7 @@ const ProductCard = ({ product }: IProductProps) => {
           to={`/categories/${product.masterVariant.attributes[2].value}/${
             product.key.split('_')[0]
           }/${product.slug['en-US']}`}
+          className={styles.link}
         >
           {product.masterVariant.sku}
         </Link>
@@ -49,7 +51,9 @@ const ProductCard = ({ product }: IProductProps) => {
           <span className={styles.attribute__title}>Size:</span>{' '}
           {product.masterVariant.attributes[1].value} "
         </h3>
-        <p className={styles.description}>{product.description?.['en-US']}</p>
+        <p className={slug ? styles.description__product : styles.description}>
+          {product.description?.['en-US']}
+        </p>
 
         <CardButton product={product} />
       </div>

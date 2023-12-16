@@ -2,14 +2,17 @@ import React from 'react';
 
 import { MasterData } from '../../../types/productsType';
 import { Link } from 'react-router-dom';
+
 import './product-bar.scss';
 
 const ProductBar = ({
   productsArray,
   title,
+  link,
 }: {
   productsArray: MasterData[];
   title: string;
+  link: string;
 }) => {
   return (
     <section className="section trending">
@@ -31,9 +34,14 @@ const ProductBar = ({
               />
               <div className="trending__products-description">
                 <div className="trending__products-header">
-                  <h4 className="trending__products-title">
+                  <Link
+                    to={`/categories/${el.masterVariant.attributes[2].value}/${
+                      el.key.split('_')[0]
+                    }/${el.slug['en-US']}`}
+                    className="trending__products-title"
+                  >
                     {el.masterVariant.sku}
-                  </h4>
+                  </Link>
                   <Link
                     to={`/categories/${el.masterVariant.attributes[2]?.value}`}
                   >
@@ -76,9 +84,9 @@ const ProductBar = ({
           );
         })}
       </div>
-      <button type="button" className="button">
+      <Link to={link} className="button">
         See more
-      </button>
+      </Link>
     </section>
   );
 };
