@@ -8,24 +8,10 @@
   padding: 20px;
   z-index: 11;
   background-color: var(--color-dark-secondary);
+  transition: background-color 1s ease-out;
 
-  &__form {
-    min-width: 300px;
-    display: flex;
-    align-items: center;
-    column-gap: 15px;
-    border-radius: 6px;
-    background-color: var(--color-dark-primary);
-    padding: 4px 10px;
-  }
-  &__input {
-    background-color: var(--color-dark-primary);
-    color: var(--color-title);
-    border: none;
-    outline: none;
-    &::placeholder {
-      color: var(--color-subtitle);
-    }
+  &.open {
+    background-color: black;
   }
 
   &__menu {
@@ -33,81 +19,14 @@
     width: 60%;
     align-items: center;
     justify-content: space-between;
-    will-change: transform;
-    &.open {
-      position: fixed;
-      width: 100%;
-      height: 100vh;
-      top: 0;
-      left: 0;
-      will-change: transform;
-    }
-    @media screen and (max-width: 768px){
-      position: absolute;
-      width: 100%;
-      height: 100vh;
-      top: 0;
-      left: -110%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      row-gap: 20px;
-      align-items: center;
-      background: var(--color-dark-secondary);
-      z-index: 10;
-      transition: all 1s;
-      will-change: transform;
+    @media screen and (max-width: 768px) {
+      display: none;
     }
   }
 }
 
 .logo {
   z-index: 11;
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  column-gap: 15px;
-
-  &__link {
-    position: relative;
-    display: flex;
-    align-items: center;
-    column-gap: 5px;
-    color: var(--color-subtitle);
-    transition: color 0.5s;
-
-    &-icon {
-      display: flex;
-      align-items: center;
-      //color: var(--color-accent-secondary);
-    }
-
-    &-title {
-      font-size: 1.4rem;
-      text-transform: uppercase;
-    }
-
-    &-size {
-      position: absolute;
-      width: 17px;
-      height: 17px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      right: 0;
-      bottom: -5px;
-      font-size: 1rem;
-      border-radius: 50%;
-      background-color: var(--color-accent-secondary);
-      color: var(--color-title);
-    }
-
-    &:hover {
-      color: var(--color-title);
-    }
-  }
 }
 
 .burger {
@@ -120,8 +39,4 @@
   @media screen and (max-width: 768px) {
     display: block;
   }
-}
-
-.nav_active {
-  color: white;
 }

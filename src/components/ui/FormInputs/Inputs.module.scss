@@ -23,7 +23,7 @@
 }
 
 .input::placeholder {
-  color: var(--color-accent-secondary) ;
+  color: var(--color-accent-secondary);
   font-weight: 700;
 }
 
@@ -38,4 +38,3 @@
 .input.error:focus {
   outline: 2px solid var(--color-error);
 }
-

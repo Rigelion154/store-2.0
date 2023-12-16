@@ -4,6 +4,7 @@ import { userSignIn } from '../../services/Auth/userSignIn';
 export interface UserState {
   isAuth: boolean;
   userId: string;
+  isOpen: boolean;
   loading: boolean;
   error: string[];
 }
@@ -11,6 +12,7 @@ export interface UserState {
 const initialState: UserState = {
   isAuth: !!localStorage.getItem('userId'),
   userId: localStorage.getItem('userId') || '',
+  isOpen: false,
   loading: false,
   error: [],
 };
@@ -27,6 +29,9 @@ export const userSlice = createSlice({
     setAuthError(state, { payload }) {
       state.error = payload;
     },
+    setIsOpen(state) {
+      state.isOpen = !state.isOpen;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(userSignIn.fulfilled, (state, { payload }) => {
@@ -37,4 +42,4 @@ export const userSlice = createSlice({
   },
 });
 
-export const { logout, setAuthError } = userSlice.actions;
+export const { logout, setAuthError, setIsOpen } = userSlice.actions;
