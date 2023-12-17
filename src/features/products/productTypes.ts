@@ -9,6 +9,7 @@ export interface CategoriesState {
   lessThenProducts: MasterData[];
   saleProducts: MasterData[];
   randomProducts: MasterData[];
+  searchedProducts: MasterData[];
   loading: boolean;
   error: string | undefined;
 }

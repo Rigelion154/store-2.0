@@ -11,14 +11,21 @@ interface IFilteredRequest {
   sortValue?: string;
   limit?: number;
   slug?: string;
+  search?: string;
 }
 
 export const getFilteredProducts = async (params: IFilteredRequest) => {
-  const baseURL = 'product-projections/search';
+  const baseURL = params.search
+    ? `product-projections/search?text.en-us=searchKeywords:"${params.search}`
+    : 'product-projections/search';
 
   const filter = [];
   const sort = [];
 
+  // if (params.search) {
+  //   filter.push(`searchKeywords.en-US:"${params.search}"`);
+  // }
+  console.log(params.search);
   if (params.slug) {
     filter.push(`slug.en-US:"${params.slug}"`);
   }
@@ -51,6 +58,7 @@ export const getFilteredProducts = async (params: IFilteredRequest) => {
     params: {
       filter,
       limit: params.limit,
+      // 'text.en-us': params.search ? `searchKeywords:"${params.search}"` : '',
     },
   });
   const { results } = await response.data;

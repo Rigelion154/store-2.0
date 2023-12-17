@@ -7,6 +7,7 @@ const initialState: CategoriesState = {
   lessThenProducts: [],
   saleProducts: [],
   randomProducts: [],
+  searchedProducts: [],
   loading: false,
   error: '',
 };
@@ -14,7 +15,11 @@ const initialState: CategoriesState = {
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchedProducts(state, { payload }) {
+      state.searchedProducts = payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getProducts.fulfilled, (state, { payload }) => {
       state.productsArray = payload;
@@ -34,3 +39,5 @@ export const productsSlice = createSlice({
     });
   },
 });
+
+export const { setSearchedProducts } = productsSlice.actions;
