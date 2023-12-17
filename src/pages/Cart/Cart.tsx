@@ -12,7 +12,7 @@ import styles from './Cart.module.scss';
 const Cart = () => {
   const { lineItems } = useSelector((state: RootState) => state.cart);
   return (
-    <div className={`${styles.container} section`}>
+    <div className={`page__container section`}>
       {lineItems.length > 0 ? (
         lineItems.map((item) => <CartItem key={item.id} lineItem={item} />)
       ) : (

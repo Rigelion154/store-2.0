@@ -20,6 +20,5 @@ export const getActiveCarts = createAsyncThunk(
 
 export const getCarts = async () => {
   const response = await $dataApi<IGetCartsResponse>('me/carts?limit=100');
-  console.log(response.data);
   return response.data.results;
 };

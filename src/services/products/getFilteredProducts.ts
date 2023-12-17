@@ -9,23 +9,29 @@ interface IFilteredRequest {
   screenSize?: string | null;
   sortType?: string;
   sortValue?: string;
-  limit?: number;
+  // limit?: number;
   slug?: string;
   search?: string;
+  offset?: number;
+  // lastId?: string;
 }
 
 export const getFilteredProducts = async (params: IFilteredRequest) => {
   const baseURL = params.search
     ? `product-projections/search?text.en-us=searchKeywords:"${params.search}`
-    : 'product-projections/search';
+    : `product-projections/search?withTotal=false&sort=id+asc`;
+
+  // response = client.get(
+  //   endpoint + '?withTotal=false&limit=100&sort=id+asc&where=id%3E' + lastId,
+  // );
 
   const filter = [];
   const sort = [];
 
-  // if (params.search) {
-  //   filter.push(`searchKeywords.en-US:"${params.search}"`);
+  // if (params.lastId) {
+  //   filter.push(`where=id%3E${params.lastId}`);
   // }
-  console.log(params.search);
+
   if (params.slug) {
     filter.push(`slug.en-US:"${params.slug}"`);
   }
@@ -57,8 +63,8 @@ export const getFilteredProducts = async (params: IFilteredRequest) => {
   const response = await $dataApi<IProductsResponse>(baseURL, {
     params: {
       filter,
-      limit: params.limit,
-      // 'text.en-us': params.search ? `searchKeywords:"${params.search}"` : '',
+      limit: 3,
+      offset: params.offset,
     },
   });
   const { results } = await response.data;
