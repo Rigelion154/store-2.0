@@ -5,6 +5,7 @@ export const ROUTES = {
   CATEGORIES: '/categories',
   CATEGORY: '/categories/:category',
   SUBCATEGORY: '/categories/:category/:subCategory',
+  SEARCH: '/search',
   PRODUCT: '/categories/:category/:subCategory/:slug',
   SALE: '/sales',
   LEES_THEN: '/less_then_500',

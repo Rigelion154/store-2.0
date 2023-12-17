@@ -1,0 +1,25 @@
+.container {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.link__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  row-gap: 15px;
+  font-size: 1.7rem;
+}
+
+.link {
+  color: var(--color-accent-primary);
+  margin-left: 5px;
+}
