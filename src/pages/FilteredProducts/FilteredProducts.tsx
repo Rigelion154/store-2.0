@@ -22,7 +22,7 @@ const FilteredProducts = () => {
   }, [pathname, searchedProducts]);
 
   return (
-    <div className={styles.container}>
+    <div className="page__container">
       {products.length > 0 ? (
         products.map((product) => (
           <ProductCard key={product.id} product={product} />

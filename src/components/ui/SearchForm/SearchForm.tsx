@@ -6,7 +6,7 @@ import { CiSearch } from 'react-icons/ci';
 import { ROUTES } from '../../../routes/routes';
 import { MasterData } from '../../../types/productsType';
 
-import { getFilteredProducts } from '../../../services/Products/getFilteredProducts';
+import { getFilteredProducts } from '../../../services/products/getFilteredProducts';
 import { AppDispatch, RootState } from '../../../features/store';
 import { setIsOpen } from '../../../features/userApi/userSlice';
 import { setSearchedProducts } from '../../../features/products/productsSlice';
